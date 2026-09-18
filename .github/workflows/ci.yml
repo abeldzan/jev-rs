@@ -14,7 +14,7 @@ jobs:
       matrix:
         toolchain: ["1.98.1", stable]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{ matrix.toolchain }}
