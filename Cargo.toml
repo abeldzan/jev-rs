@@ -1,0 +1,46 @@
+[package]
+name = "typesafe-sdk"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.98.1"
+publish = false
+description = "Rust SDK for the TypeSafe AI API"
+license = "MIT"
+readme = "README.md"
+homepage = "https://typesafe.ai"
+documentation = "https://docs.rs/typesafe-sdk"
+keywords = ["typesafe", "sdk", "api", "ai"]
+categories = ["api-bindings", "asynchronous"]
+build = "build.rs"
+
+[features]
+default = []
+blocking = ["reqwest/blocking"]
+
+[dependencies]
+bytes = "1"
+fastrand = "2"
+http = "1"
+httpdate = "1"
+indexmap = { version = "2", features = ["serde"] }
+reqwest = { version = "0.13", default-features = false, features = ["json", "rustls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+thiserror = "2"
+tokio = { version = "1", default-features = false, features = ["time"] }
+tracing = "0.1"
+url = "2"
+
+[build-dependencies]
+rustc_version = "0.4"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time"] }
+wiremock = "0.6"
+
+[package.metadata.docs.rs]
+all-features = true
+
+[[example]]
+name = "blocking"
+required-features = ["blocking"]
